@@ -7,7 +7,7 @@
     "prestart": "npm run ya-db",
     "start": "node index.js",
     "dev": "npm run migrate-db && nodemon index.js",
-    "migrate-db": "sequelize db:create && sequelize db:migrate"
+    "migrate-db": "sequelize db:create || : && sequelize db:migrate"
   },
   "author": "",
   "license": "ISC",
