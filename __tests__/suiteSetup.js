@@ -1,7 +1,7 @@
 const { sequelize } = require('../src/app/models')
 
-beforeAll(() => {
-  sequelize.truncate({ cascade: true, restartIdentity: true });
+beforeEach(async () => {
+  await sequelize.truncate({ cascade: true, restartIdentity: true });
 })
 
 afterAll(() => {
