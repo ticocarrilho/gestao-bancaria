@@ -38,5 +38,15 @@ describe('POST /conta', () => {
 });
 
 describe('GET /conta', () => {
-  
+  it('deve retornar informações da conta', async () => {
+    await Conta.create(dadosConta)
+    const response = await request(app).get('/conta').query({ id: dadosConta.conta_id });
+    expect(response.body).toMatchObject(dadosConta);
+  });
+
+  it('deve retornar erro 404 para ID de conta não existente', async () => {
+    await Conta.create(dadosConta)
+    const response = await request(app).get('/conta').query({ id: 123123123123 });
+    expect(response.status).toBe(404);
+  });
 });
