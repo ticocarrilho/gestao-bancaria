@@ -3,13 +3,13 @@ const request = require('supertest');
 const app = require('../../src/app');
 const { Conta } = require('../../src/app/models')
 
-const dadosConta = { conta_id: 1234, saldo: 10 };
+const dadosConta = { conta_id: '1234', saldo: '10' };
 
 describe('POST /conta', () => {
   it('deve criar uma conta', async () => {
     const response = await request(app).post('/conta').send(dadosConta);
     expect(response.status).toBe(201);
-    expect(response.body).toBe(dadosConta);
+    expect(response.body).toMatchObject(dadosConta);
   });
 
   it('deve dar erro ao criar uma conta com saldo negativo', async () => {
