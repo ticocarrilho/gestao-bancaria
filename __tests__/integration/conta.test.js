@@ -32,7 +32,7 @@ describe('POST /conta', () => {
   it('deve dar erro ao criar uma conta com conta_id já existente', async () => {
     await Conta.create(dadosConta)
     const response = await request(app).post('/conta').send(dadosConta);
-    expect(response.status).toBe(403);
+    expect(response.status).toBe(400);
   });
 
 });
