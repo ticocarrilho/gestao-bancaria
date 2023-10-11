@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     saldo: {
       type: DataTypes.DECIMAL,
-      allowNull: false
+      allowNull: false,
+      validate: { min: 0 }
     },
     conta_id: {
       type: DataTypes.STRING,
