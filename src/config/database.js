@@ -9,7 +9,7 @@ module.exports = {
     dialect: 'postgres',
     logging: console.log,
     define: {
-      timestamps: true,
+      timestamps: false,
       underscored: false,
     },
   },
@@ -21,7 +21,7 @@ module.exports = {
     dialect: 'postgres',
     logging: console.log,
     define: {
-      timestamps: true,
+      timestamps: false,
       underscored: false,
     },
   },
@@ -33,7 +33,7 @@ module.exports = {
     dialect: 'postgres',
     logging: false,
     define: {
-      timestamps: true,
+      timestamps: false,
       underscored: false,
     },
   },
