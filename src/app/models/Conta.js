@@ -15,10 +15,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true
     }
+  }, {
+    tableName: 'contas'
   });
 
   Conta.associate = function(models) {
-    Conta.hasMany(models.transacao, { foreignKey: 'conta_id', as: 'conta' });
+    Conta.hasMany(models.Transacao, { foreignKey: 'conta_id', as: 'conta' });
   }
 
   return Conta;
