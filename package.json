@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm run ya-db",
+    "prestart": "npm run migrate-db",
     "start": "node index.js",
+    "pretest": "NODE_ENV=test npm run migrate-db",
+    "test": "NODE_ENV=test npx jest --runInBand",
     "dev": "npm run migrate-db && nodemon index.js",
     "migrate-db": "sequelize db:create || : && sequelize db:migrate"
   },
