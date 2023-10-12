@@ -1,7 +1,7 @@
 const request = require('supertest');
 
 const app = require('../../src/app');
-const { Conta } = require('../../src/app/models')
+const factory = require('../factory');
 
 const dadosConta = { conta_id: '1234', saldo: '10' };
 
@@ -30,8 +30,8 @@ describe('POST /conta', () => {
   });
 
   it('deve dar erro ao criar uma conta com conta_id já existente', async () => {
-    await Conta.create(dadosConta)
-    const response = await request(app).post('/conta').send(dadosConta);
+    const conta = await factory.create('Conta');
+    const response = await request(app).post('/conta').send({ conta_id: conta.conta_id, saldo: conta.saldo});
     expect(response.status).toBe(400);
   });
 
@@ -39,13 +39,13 @@ describe('POST /conta', () => {
 
 describe('GET /conta', () => {
   it('deve retornar informações da conta', async () => {
-    await Conta.create(dadosConta)
-    const response = await request(app).get('/conta').query({ id: dadosConta.conta_id });
-    expect(response.body).toMatchObject(dadosConta);
+    const conta = await factory.create('Conta');
+    const response = await request(app).get('/conta').query({ id: conta.conta_id });
+    expect(response.body).toMatchObject({ conta_id: conta.conta_id, saldo: conta.saldo });
   });
 
   it('deve retornar erro 404 para ID de conta não existente', async () => {
-    await Conta.create(dadosConta)
+    await factory.create('Conta');
     const response = await request(app).get('/conta').query({ id: 123123123123 });
     expect(response.status).toBe(404);
   });
