@@ -1,9 +1,5 @@
 const { Conta } = require('../../src/app/models')
-
-const dadosConta = {
-  saldo: 100,
-  conta_id: Math.random()
-}
+const { dadosConta } = require('../dados')
 
 describe('Conta', () => {
   it('deve criar uma conta sem erro', async () => {

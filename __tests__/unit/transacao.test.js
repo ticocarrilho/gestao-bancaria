@@ -1,14 +1,6 @@
 const { Transacao, Conta } = require('../../src/app/models')
+const { dadosConta, dadosTransacao } = require('../dados')
 
-const dadosConta = {
-  saldo: 100,
-  conta_id: Math.random()
-}
-
-const dadosTransacao = {
-  forma_pagamento: 'D',
-  valor: 10,
-}
 
 describe('Transacao', () => {
   it('deve criar uma transação sem erro', async () => {

@@ -3,10 +3,8 @@ const request = require('supertest');
 const app = require('../../src/app');
 const factory = require('../factory');
 
-const dadosTransacao = {
-  forma_pagamento: 'D',
-  valor: 10,
-}
+const { dadosTransacao } = require('../dados')
+
 
 describe('POST /transacao', () => {
   it('deve criar uma transacao', async () => {

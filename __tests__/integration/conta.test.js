@@ -3,7 +3,7 @@ const request = require('supertest');
 const app = require('../../src/app');
 const factory = require('../factory');
 
-const dadosConta = { conta_id: '1234', saldo: '10' };
+const { dadosConta } = require('../dados')
 
 describe('POST /conta', () => {
   it('deve criar uma conta', async () => {
