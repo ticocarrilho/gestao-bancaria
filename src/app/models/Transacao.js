@@ -8,11 +8,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     forma_pagamento: {
       type: DataTypes.CHAR(1),
-      allowNull: false
+      allowNull: false,
+      validate: { isIn: [['D', 'C', 'P']] }
     },
     valor: {
       type: DataTypes.DECIMAL,
-      allowNull: false
+      allowNull: false,
+      validate: { min: 1 }
     },
     conta_id: {
       type: DataTypes.INTEGER,
